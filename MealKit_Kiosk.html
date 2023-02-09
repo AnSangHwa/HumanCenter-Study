@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<html lang="en">
+<head>
+    
+    <title>MealKit</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+        #body{
+
+            background-color: ivory;
+            
+        }
+
+        #margin{
+
+            margin: auto;            
+            width: 700px;
+            height: 1016.770px;
+            padding: 50px;
+            background-color: rgb(238,227,205);
+        }
+
+        #header h1{
+            
+            display: block;
+                    
+            color: brown;
+            font-size: 100px;
+            font-family: 'Staatliches', cursive;
+        }
+
+        #header{
+            text-align: center;
+        }
+
+        #nav { 
+            
+            
+            padding: 0px 0px 10px 0px;            
+            text-align: center;
+            list-style-type: none;
+                   
+        }
+        
+        #nav .select{
+
+            display: inline-block;
+            border: 3px solid #d18b768e;            
+            margin: 0px 10px;
+            padding: 10px 15px;
+            background-color: rgba(230, 230, 152, 0.623);
+            border-radius: 10px;
+
+        }
+        #nav a{
+
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(77, 9, 9);
+            font-weight: bolder;
+        }
+
+        #ktg_select{      
+            display: inline-block;               
+            text-align: center;
+            padding: 5px 0px;
+
+        }
+
+        .menu ul{
+            padding: 0px;
+            text-align: center;
+            list-style-type: none;
+        }
+        .menu ul .meal{
+
+            display: inline-block;
+            margin: 10px 20px;
+        }
+        .menu ul .meal img{
+            width: 185px;
+                        
+        }
+        .menu ul .meal p:first-of-type{
+
+            margin: 5px 0px 0px;
+            color: rgba(58, 47, 18, 0.815);
+
+        }
+        .menu ul .meal p{
+            margin: 5px 0px 30px 0px;
+            font-weight: bolder;
+            color: black;
+        }
+        
+        
+        
+        #menu1 {
+            display: none;
+            
+        }
+        #menu2 {
+            display: none;
+        }
+        #menu3 {
+            display: none;
+        }
+        #menu4 {
+            display: none;
+        }
+
+        
+        #nav .select:focus{
+            border: 3px solid rgba(230, 230, 152, 0.623);          
+            margin: 0px 10px;
+            padding: 10px 15px;
+            background-color: #d18b768e; 
+            border-radius: 10px;
+            
+        }
+       
+        
+        #nav #select1:focus~#menu1{
+            display: block;
+        }
+        
+        #nav #select2:focus~#menu2{
+            display: block;
+        }
+        
+        #nav #select3:focus~#menu3{
+            display: block;
+        }
+        
+        #nav #select4:focus~#menu4{
+            display: block;
+        }
+        
+        #nav .menu:hover{
+            display: block;
+        }   
+        
+        #nav .ktg_select:focus~#ktg{
+            display: none;
+        }
+        
+        #nav .ktg_menu:hover~#ktg{
+            display: none;
+        }
+
+        .meal:hover{
+
+            cursor: Pointer;
+        }
+        
+        #list{
+        
+            
+            position:relative; 
+            top: 150px;
+            right: 15px;
+            position: fixed;
+            
+            
+            display: inline-block;
+            background-color: rgb(238,227,205);
+            width: 350px;
+            
+            /* height: 500px; */
+            
+        
+            text-align: center;        
+            
+            
+        }
+
+        #list h1{
+            
+            font-size: 25px;
+        } 
+
+        #listAdd{
+           
+            display: inline-block;
+            background-color: ivory;
+            width: 85%;     
+            padding: 10px;
+            
+            
+            
+        }
+        #listAdd p{
+            margin: 0px;
+            text-align: left; 
+            font-weight: bolder;
+        }
+        #tListAdd tr .th1{
+            display: inline-block;
+            width: 90px;
+        }
+        #tListAdd tr .th2{
+            display: inline-block;
+            width: 70px;
+        }
+        #tListAdd tr th{
+
+            display: inline-block;            
+            margin:  8px;
+        }
+
+        #buy{
+
+            width: 85%;
+            height: 50px;
+            margin: 0px 0px 15px 0px;
+            border: 3px solid #d18b768e;            
+            padding: 10px 15px;
+            background-color: rgba(230, 230, 152, 0.623);
+            border-radius: 10px;
+            font-size: 20px;
+            text-decoration: none;
+            color: rgb(77, 9, 9);
+            font-weight: bolder;
+        }
+        #buy:hover{
+            cursor: Pointer;
+            border: 3px solid rgba(230, 230, 152, 0.623);
+          
+            background-color:#d18b768e;
+        }
+        
+        
+
+        #allSum{          
+            
+           display: inline-block;
+            font-size: 20px;
+            font-weight: bolder;
+            color: rgb(77, 9, 9);
+            
+            
+        }
+        
+            
+        
+            </style>
+        </head>
+            <body id = "body">
+                <div id="margin">
+        <header>
+            <div id = "header">
+                <h1>F r e s h &nbsp;&nbsp;  M e a l</h1>
+                </div>
+
+        </header>
+        <nav>
+            <div id = "nav">
+                <a class="select ktg_select" id = "select1" href="#">국·탕·찌개</a>                    
+                <a class="select ktg_select" id = "select2" href="#">김치·젓갈·장류</a>
+                <a class="select ktg_select" id = "select3" href="#">두부·어묵·부침개</a>
+                <a class="select ktg_select" id = "select4" href="#">밑반찬</a>
+                    <div class = "menu ktg_menu" id ="menu1">
+                        <ul>                    
+                            <div>
+                                <li class="meal" onclick="addMenu(0)">                        
+                                    <img src="https://img-cf.kurly.com/shop/data/goods/1655711470581l0.jpg" alt="온달 육개장">
+                                    <p class="menuTitle">온달 육개장</p>
+                                    <p class="price">9,800원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(1)"><img src ="https://img-cf.kurly.com/shop/data/goods/1655708322459l0.jpg" alt="소곱창전골">
+                                    <p class="menuTitle">소곱창전골</p>
+                                    <p class="price">10,900원</p>                        
+                                </li>
+                                <li class="meal" onclick="addMenu(2)"><img src ="https://img-cf.kurly.com/shop/data/goods/165544918156l0.jpg" alt="동대문식 닭한마리">
+                                    <p class="menuTitle">동대문식 닭한마리</p>
+                                    <p class="price">16,900원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(3)"><img src ="https://img-cf.kurly.com/shop/data/goods/1648206780555l0.jpeg" alt="갈비탕">
+                                    <p class="menuTitle">갈비탕</p>
+                                    <p class="price">12,000원</p>
+                                </li>
+                                <li class="meal"  onclick="addMenu(4)"><img src ="https://img-cf.kurly.com/shop/data/goods/1555917574617l0.jpg" alt="수제 김치찌개 2종">
+                                    <p class="menuTitle">수제 김치찌개 2종</p>
+                                    <p class="price">5,700원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(5)"><img src="https://img-cf.kurly.com/shop/data/goods/1637922288375l0.jpg" alt="고기 설렁탕">
+                                    <p class="menuTitle">고기 설렁탕</p>
+                                    <p class="price">7,900원</p>
+                                </li>
+                            </div>
+                        </ul> 
+                    </div>
+        
+                    <div class = "menu ktg_menu" id ="menu2">
+                        <ul>                    
+                            <div>
+                                <li class="meal"  onclick="addMenu(6)">                        
+                                    <img src="https://img-cf.kurly.com/shop/data/goods/1653036143791l0.jpeg" alt="오정어젓갈">
+                                    <p class="menuTitle">오징어젓갈</p>
+                                    <p class="price">6,000원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(7)"><img src ="https://img-cf.kurly.com/shop/data/goods/1653037010191l0.jpeg" alt="시원한 배추김치">
+                                    <p class="menuTitle">시원한 배추김치</p>
+                                    <p class="price">10,800원</p>                        
+                                </li>
+                                <li class="meal" onclick="addMenu(8)"><img src ="https://img-cf.kurly.com/shop/data/goods/1591763881647l0.jpg" alt="새우젓">
+                                    <p class="menuTitle">새우젓</p>
+                                    <p class="price">4,800원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(9)"><img src ="https://img-cf.kurly.com/shop/data/goods/153051778840l0.jpg" alt="낙지젓갈">
+                                    <p class="menuTitle">낙지젓갈</p>
+                                    <p class="price">7,000원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(10)"><img src ="https://img-cf.kurly.com/shop/data/goods/1516082858617l0.jpg" alt="생깻잎김치">
+                                    <p class="menuTitle">생깻잎김치</p>
+                                    <p class="price">3,720원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(11)"><img src="https://img-cf.kurly.com/shop/data/goods/1524121029496l0.jpg" alt="파김치">
+                                    <p class="menuTitle">파김치</p>
+                                    <p class="price">7,900원</p>
+                                </li>
+                            </div>
+                        </ul> 
+                    </div>
+        
+                    <div class = "menu ktg_menu" id ="menu3">
+                        <ul>                    
+                            <div>
+                                <li class="meal" onclick="addMenu(12)">                        
+                                    <img src="https://img-cf.kurly.com/shop/data/goods/164730389977l0.jpg" alt="국산 콩두부 300g">
+                                    <p class="menuTitle">국산 콩두부 300g</p>
+                                    <p class="price">1,900원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(13)"><img src ="https://img-cf.kurly.com/shop/data/goods/1653036974739l0.jpeg" alt="탱글탱글 국탕용 종합 어묵">
+                                    <p class="menuTitle">탱글탱글 국탕용 종합 어묵</p>
+                                    <p class="price">3,600원</p>                        
+                                </li>
+                                <li class="meal" onclick="addMenu(14)"><img src ="https://img-cf.kurly.com/shop/data/goods/1562306917228l0.jpg" alt="한입아삭 김치전">
+                                    <p class="menuTitle">한입아삭 김치전</p>
+                                    <p class="price">4,370원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(15)"><img src ="https://img-cf.kurly.com/shop/data/goods/1591686295529l0.jpg" alt="두부면 2종">
+                                    <p class="menuTitle">두부면 2종</p>
+                                    <p class="price">2,600원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(16)"><img src ="https://img-cf.kurly.com/shop/data/goods/1619053866422l0.jpg" alt="국산콩 꼬마 나또 2종">
+                                    <p class="menuTitle">국산콩 꼬마 나또 2종</p>
+                                    <p class="price">3,580원</p>
+                                </li>
+                                <li class="meal" onclick="addMenu(17)"><img src="https://img-cf.kurly.com/shop/data/goods/1594026846643l0.jpg" alt="국산 도토리묵">
+                                    <p class="menuTitle">국산 도토리묵</p>
+                                    <p class="price">4,700원</p>
+                                </li>
+                            </div>
+                        </ul> 
+                    </div>
+        
+                    <div class = "menu ktg_menu" id ="menu4">
+                        <ul>                    
+                                <div>
+                                    <li class="meal" onclick="addMenu(18)">                        
+                                        <img src="https://img-cf.kurly.com/shop/data/goods/1637921529270l0.jpg" alt="콘샐러드 100g">
+                                        <p class="menuTitle">콘샐러드 100g</p>
+                                        <p class="price">1,080원</p>
+                                    </li>
+                                    <li class="meal" onclick="addMenu(19)"><img src ="https://img-cf.kurly.com/shop/data/goods/1629442826842l0.jpg" alt="바삭하게 볶은 돌김자반">
+                                        <p class="menuTitle">바삭하게 볶은 돌김자반</p>
+                                        <p class="price">2,200원</p>                        
+                                    </li>
+                                    <li class="meal" onclick="addMenu(20)"><img src ="https://img-cf.kurly.com/shop/data/goods/1637649874117l0.jpg" alt="무쌈 3종">
+                                        <p class="menuTitle">무쌈 3종</p>
+                                        <p class="price">2,660원</p>
+                                    </li>
+                                    <li class="meal" onclick="addMenu(21)"><img src ="https://img-cf.kurly.com/shop/data/goods/1568967986383l0.jpg" alt="묶음 반찬 세트 9종">
+                                        <p class="menuTitle">묶음 반찬 세트 9종</p>
+                                        <p class="price">7,905원</p>
+                                    </li>
+                                    <li class="meal" onclick="addMenu(22)"><img src ="https://img-cf.kurly.com/shop/data/goods/1637921674319l0.jpg" alt="맑은 곰탕">
+                                        <p class="menuTitle">맑은 곰탕</p>
+                                        <p class="price">7,900원</p>
+                                    </li>
+                                    <li class="meal" onclick="addMenu(23)"><img src="https://img-cf.kurly.com/shop/data/goods/1516240390259l0.jpg" alt="순한 진미채볶음">
+                                        <p class="menuTitle">순한 진미채볶음</p>
+                                        <p class="price">3,150원</p>
+                                    </li>
+                                </div>
+                            </ul> 
+                        </div>                      
+                        <div id = "ktg">
+                            <h1>↑<br>카테고리를 선택해주세요</h1>
+                        </div>
+                </div>
+            </nav>
+    </div>
+    <aside>
+        <div id = "list">  
+            <h1>장바구니</h1> 
+            
+            <div id = "listAdd">
+                <table id = "tListAdd">
+                    
+                </table>
+                
+            </div>
+            
+            <table id = "allSum">
+                <tr>
+                    <th>합계 :&nbsp;</th>
+                    <th id = "allSum">0</th>
+                    <th>원</th>
+                </tr>
+            </table> 
+                  
+            <button id="buy" onclick="buy()">결제하기</button>       
+        </div>
+    </aside>
+
+    
+</body> 
+<script>
+    let menuTitle = [];
+    let price = [];
+    let changNum = /[^0-9]/g;
+    let addListArr =[];
+
+    
+
+    for( let i = 0; i <document.getElementsByClassName("price").length; i++ ){
+
+    price.push(Number(document.getElementsByClassName("price")[i].innerHTML.replace(changNum,"")));
+    }
+    
+
+    for( let i = 0; i <document.getElementsByClassName("menuTitle").length; i++ ){
+        
+        menuTitle.push(document.getElementsByClassName("menuTitle")[i].innerHTML);
+    }
+    
+    
+    // list 추가에 사용할 변수
+    let i = 0;
+    let countArr = [];
+    let priceArr = [];
+    let table = document.getElementById("tListAdd");
+
+    // list 삭제에 사용할 변수
+    let listArr = [];
+    let delBtnArr = [];
+    
+
+    function addMenu(x){
+        
+        
+        // 리스트 추가
+        // tr
+        let newRow = table.insertRow();
+       
+        
+       
+        // th1
+        let newCell1 = document.createElement("th");
+        let th1 = newRow.appendChild(newCell1);
+        newCell1.setAttribute( 'class', 'th1' );    
+        newCell1.innerHTML = menuTitle[x]; 
+        
+        // th2
+        let newCell2 = document.createElement("th");        
+        let th2 = newRow.appendChild(newCell2);
+        let input = document.createElement("input");
+        th2.appendChild(input);
+        input.setAttribute( 'class', 'count' );
+        input.setAttribute( 'type', 'number' );
+        input.setAttribute( 'min', '1' );
+        input.setAttribute( 'max', '5' );
+        input.setAttribute( 'style', 'width:30px;' );
+        input.setAttribute( 'value', '1' );
+        input.setAttribute( 'onchange', 'count()' );     
+           
+        
+        // th3
+        let newCell3 = document.createElement("th");        
+        let th3 = newRow.appendChild(newCell3);
+        newCell3.setAttribute( 'class','countSum th2');
+        th3.innerHTML = Number(price[x]).toLocaleString()+"원";
+
+        /// th4
+        let newCell4 = document.createElement("th");        
+        let th4 = newRow.appendChild(newCell4);
+        let button = document.createElement("button");
+        th4.appendChild(button);
+        button.setAttribute('class','del');
+        button.setAttribute('onclick','del('+i+')');
+        button.innerHTML = "x";
+        
+        
+
+        // 총 합산
+        let allSum = document.getElementById("allSum")
+        let sum = 0;
+            for(let i = 0; i <document.getElementsByClassName("countSum").length; i++){
+            sum += Number(document.getElementsByClassName("countSum")[i].innerHTML.replace(changNum,""));
+            
+            }
+       
+        allSum.rows[0].cells[1].innerHTML = sum.toLocaleString();
+
+        countArr.push(document.getElementsByClassName("count")[i].value);
+        priceArr.push(document.getElementsByClassName("countSum")[i].textContent);
+
+        
+        
+        // 리스트 삭제할 배열 생성
+        let rowLength = document.getElementById("tListAdd").length;
+                        
+        listArr.push(document.getElementById("tListAdd").firstElementChild.children[i]);
+        delBtnArr.push(document.getElementsByClassName("del")[i]);            
+        
+       
+        // addMenu(x) 함수 실행시 마다  countArr, priceArr 배열을 순차적으로 증가(let i = 0; / 전역변수)
+        i++;      
+    }
+    
+    
+   
+    
+    function count(){ 
+        
+
+        let rowLength = document.getElementById("tListAdd").rows.length;
+      
+            for( let i = 0; i < rowLength; i++ ){
+
+                document.getElementsByClassName("countSum")[i].innerHTML = Number(countArr[i])*Number(priceArr[i].replace(changNum,""));
+                countNum = Number(document.getElementsByClassName("count")[i].value);
+                priceSum = document.getElementsByClassName("countSum")[i].textContent;
+                document.getElementsByClassName("countSum")[i].innerHTML = (countNum*priceSum).toLocaleString()+"원";
+                
+            }
+
+        // 총 합산
+        let allSum = document.getElementById("allSum")
+        let sum = 0;
+
+            for(let i = 0; i <document.getElementsByClassName("countSum").length; i++){
+            sum += Number(document.getElementsByClassName("countSum")[i].innerHTML.replace(changNum,""));
+            
+            }
+        allSum.rows[0].cells[1].innerHTML = sum.toLocaleString();
+       
+
+        
+    }
+    
+    // 리스트 삭제 함수 
+    function del(index){
+        
+        listArr.splice(index,1);
+        
+        let inner= '';    
+      
+        
+        for (let i = 0; i < listArr.length; i++){
+            
+            inner += listArr[i].outerHTML;
+           
+        }
+        
+        document.getElementById("tListAdd").innerHTML = inner;
+
+       
+        
+
+
+    }
+
+    function buy(){
+        alert("결제를 진행 하시겠습니까?");
+    }
+
+
+
+</script>
+</html>
